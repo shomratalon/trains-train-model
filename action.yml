@@ -16,7 +16,7 @@ inputs:
     required: true
   QUEUE_NAME:
     description: 'The queue name for the cloned task'
-    required: true
+    required: false
     default: 'default'
 outputs:
   TASK_STATUS:

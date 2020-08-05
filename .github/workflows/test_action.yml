@@ -19,7 +19,7 @@ jobs:
             QUEUE_NAME: "Alfred-queue"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        - name: print outputs
+        - name: Print task status
           run: |
             echo "Task stats is ${TASK_STATUS} for task ${CLONED_TASK}"
           env:
