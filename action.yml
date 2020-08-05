@@ -1,0 +1,17 @@
+# action.yml
+name: 'Trains train model'
+description: 'Clone and enqueue your task to train your model'
+inputs:
+  TASK_ID:
+    description: 'The id of the template task'
+    required: true
+  QUEUE_NAME:
+    description: 'The queue name for the cloned task'
+    required: true
+    default: 'default'
+outputs:
+  TASK_STATUS:
+    description: 'The task current status'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

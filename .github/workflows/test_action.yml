@@ -1,0 +1,26 @@
+name: Test train model
+on: [issue_comment]
+
+jobs:
+  train-model:
+      if: contains(github.event.comment.body, '/train-model')
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repository
+          uses: actions/checkout@v2
+        - name: Train model
+          uses: shomratalon/trains-train-model@master
+          id: train
+          with:
+            TASK_ID: "e4623efdfa1d461e9101615728fdc52e"
+            QUEUE_NAME: "Alfred-queue"
+          env:
+            TRAINS_API_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+            TRAINS_API_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            TRAINS_API_HOST: ${{ secrets.TRAINS_API_HOST }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        - name: print outputs
+          run: |
+            echo ${TASK_STATUS}
+          env:
+            TASK_STATUS: ${{ steps.train.outputs.TASK_STATUS }}
