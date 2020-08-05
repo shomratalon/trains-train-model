@@ -21,6 +21,6 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: print outputs
           run: |
-            echo ${TASK_STATUS}
+            echo "Task stats is ${TASK_STATUS}"
           env:
             TASK_STATUS: ${{ steps.train.outputs.TASK_STATUS }}
