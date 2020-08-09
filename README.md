@@ -1,4 +1,4 @@
-# GitHub Action For Running You Experiment With Allegro rains
+# GitHub Action For Running You Experiment With Allegro Trains
 
 ![GitHub stars](https://img.shields.io/github/stars/allegroai/trains?style=social)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shomratalon/trains-train-model/Test%20train%20model)
