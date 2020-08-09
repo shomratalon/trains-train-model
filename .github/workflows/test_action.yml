@@ -13,7 +13,7 @@ jobs:
             TRAINS_API_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
             TRAINS_API_SECRET_KEY: ${{ secrets.SECRET_KEY }}
             TRAINS_API_HOST: ${{ secrets.TRAINS_API_HOST }}
-            TASK_ID: "e4623efdfa1d461e9101615728fdc52e"
+            TASK_ID: "f458a609dc6145efaf634318e40c3a2e"
             QUEUE_NAME: "Alfred-queue"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
