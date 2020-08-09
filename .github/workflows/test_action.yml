@@ -6,8 +6,6 @@ jobs:
       if: contains(github.event.comment.body, '/train-model')
       runs-on: ubuntu-latest
       steps:
-        - name: Check out repository
-          uses: actions/checkout@v2
         - name: Train model
           uses: shomratalon/trains-train-model@master
           id: train
