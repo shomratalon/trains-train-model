@@ -5,5 +5,6 @@ RUN apt-get dist-upgrade -y
 RUN apt-get install -y curl python3-pip git
 RUN pip3 install github3.py
 RUN pip3 install trains
-
+RUN echo "PWD is: $PWD"
+RUN ls
 ENTRYPOINT ["python3",  "train_model.py"]
