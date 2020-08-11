@@ -4,10 +4,18 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shomratalon/trains-train-model/Test%20train%20model)
 
 
-Train models easily with Allegro Trains from your repo! 
+Train models easily with Allegro Trains from your repo!
+ 
+This action will help you to run your experiments with Trains from Github directly. 
+
 
 ## Usage
-### Example
+### Workflow Example
+This will add an action to your workflow that will clone task `TASK_ID` and will enqueue it to selected queue (`QUEUE_NAME` input parameter). 
+
+Will work in both github issues and github pull requests comments.
+
+<img src="https://github.com/shomratalon/trains-train-model/blob/master/docs/train-model.png?raw=true" width="100%">
 
 ```yaml
 name: Train model
@@ -40,15 +48,15 @@ jobs:
 
 ### Inputs
 
-#### Mandatory Inputs
+#### Mandatory
   1. `TRAINS_API_ACCESS_KEY`: Your trains api access key. You can find it in your trains.conf file under api.credentials.access_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section). 
   2. `TRAINS_API_SECRET_KEY`: Your trains api secret key. You can find it in your trains.conf file under api.credentials.secret_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
   3. `TRAINS_API_HOST`: The Trains api server address. You can find it in your trains.conf file under  api.api_server section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
   4. `TASK_ID`: Id of the task you would like to clone.
 
-#### Optional Inputs
+#### Optional
 
-  1. `QUEUE_NAME`: Queue for the cloned task. You can read more about queues [here](https://allegro.ai/docs/use_cases/trains_agent_use_case_examples/#running-workers).
+  1. `QUEUE_NAME`: Queue for the cloned task (default value: `default`). You can read more about queues [here](https://allegro.ai/docs/use_cases/trains_agent_use_case_examples/#running-workers).
   
 ### Outputs
 
