@@ -33,6 +33,8 @@ def clone_and_queue(template_task: str, queue: str) -> Task:
             data_script.version_num = selected_value
         else:
             raise Exception(f"You must supply branch, tag or commit as type, not {selected_type}")
+
+        print(f"Change train script head to {selected_value} {selected_type}")
         # noinspection PyProtectedMember
         cloned_task._update_script(script=data_script)
 
