@@ -13,11 +13,29 @@ def clone_and_queue(template_task: str, queue: str) -> Task:
 
     task = Task.get_task(task_id=template_task)
     # Clone the task to pipe to. This creates a task with status Draft whose parameters can be modified.
-    gh_issue_number = payload.get("issue", {}).get("number")
     cloned_task = Task.clone(
         source_task=task,
-        name=f"{template_task} cloned task for github issue {gh_issue_number}"
+        name=f"{template_task} cloned task from Github"
     )
+    script_commit = payload.get("comment", {}).get("body", "").partition(" ")[2]
+    selected_type, _, selected_value = script_commit.partition(" ")
+    if selected_type and selected_value:
+        data_script = cloned_task.data.script
+        if selected_type == "branch":
+            data_script.branch = selected_value
+            data_script.tag = None
+        elif selected_type == "tag":
+            data_script.branch = None
+            data_script.tag = selected_value
+        elif selected_type == "commit":
+            data_script.branch = None
+            data_script.tag = None
+            data_script.version_num = selected_value
+        else:
+            raise Exception(f"You must supply branch, tag or commit as type, not {selected_type}")
+        # noinspection PyProtectedMember
+        cloned_task._update_script(script=data_script)
+
     Task.enqueue(cloned_task.id, queue_name=queue)
     owner, repo = payload.get("repository", {}).get("full_name", "").split("/")
     if owner and repo:
