@@ -7,8 +7,8 @@ from trains import Task
 
 
 def clone_and_queue(template_task: str, queue: str) -> Task:
-    payload_fname = os.getenv('GITHUB_EVENT_PATH')
-    with open(payload_fname, 'r') as f:
+    github_payload = os.getenv('GITHUB_EVENT_PATH')
+    with open(github_payload, 'r') as f:
         payload = json.load(f)
 
     task = Task.get_task(task_id=template_task)
@@ -23,13 +23,15 @@ def clone_and_queue(template_task: str, queue: str) -> Task:
         data_script = cloned_task.data.script
         if selected_type == "branch":
             data_script.branch = selected_value
-            data_script.tag = None
+            data_script.tag = ""
+            data_script.version_num = ""
         elif selected_type == "tag":
-            data_script.branch = None
+            data_script.branch = ""
             data_script.tag = selected_value
+            data_script.version_num = ""
         elif selected_type == "commit":
-            data_script.branch = None
-            data_script.tag = None
+            data_script.branch = ""
+            data_script.tag = ""
             data_script.version_num = selected_value
         else:
             raise Exception(f"You must supply branch, tag or commit as type, not {selected_type}")
