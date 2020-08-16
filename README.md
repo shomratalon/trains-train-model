@@ -7,6 +7,10 @@
 Train models easily with Allegro Trains from your repo!
  
 This action will help you to run your experiments with Trains from Github directly. 
+Just comment from any issue or pull request with 
+  - `/train-model branch <brach name>`
+  - `/train-model tag <tag_name> `
+  - `/train-model commit <commit_id>`
 
 
 ## Usage
@@ -15,7 +19,7 @@ This will add an action to your workflow that will clone task `TASK_ID` and will
 
 Will work in both github issues and github pull requests comments.
 
-<img src="https://github.com/shomratalon/trains-train-model/blob/master/docs/train-model.png?raw=true" width="100%">
+<img src="https://github.com/shomratalon/trains-train-model/blob/master/docs/trains-train-model-flow.png?raw=true" width="100%">
 
 ```yaml
 name: Train model
