@@ -14,7 +14,7 @@ jobs:
             CLEARML_API_SECRET_KEY: ${{ secrets.SECRET_KEY }}
             CLEARML_API_HOST: ${{ secrets.CLEARML_API_HOST }}
             TASK_ID: "0a54516f430c4a37be0a9fb8c2ecc664"
-            QUEUE_NAME: "GPUx1"
+            QUEUE_NAME: "1xGPU"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: Print task status
