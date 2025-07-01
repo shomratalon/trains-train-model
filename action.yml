@@ -17,7 +17,7 @@ inputs:
   QUEUE_NAME:
     description: 'The queue name for the cloned task'
     required: false
-    default: 'GPUx1'
+    default: '1xGPU'
 outputs:
   TASK_STATUS:
     description: 'The task current status'
