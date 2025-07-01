@@ -1,7 +1,7 @@
 import json
 import os
 
-from github3 import login
+# from github3 import login
 
 from clearml import Task
 
@@ -41,18 +41,18 @@ def clone_and_queue(template_task: str, queue: str) -> Task:
         cloned_task._update_script(script=data_script)
 
     Task.enqueue(cloned_task.id, queue_name=queue)
-    owner, repo = payload.get("repository", {}).get("full_name", "").split("/")
-    if owner and repo:
-        gh = login(token=os.getenv("GITHUB_TOKEN"))
-        if gh:
-            issue = gh.issue(owner, repo, payload.get("issue", {}).get("number"))
-            if issue:
-                issue.create_comment(f"New task, id:{cloned_task.id} is in queue {queue_name}")
-            else:
-                print(f'can not comment issue, {payload.get("issue", {}).get("number")}')
-        else:
-            print(f"can not log in to gh, {os.getenv('GITHUB_TOKEN')}")
-    return cloned_task
+    # owner, repo = payload.get("repository", {}).get("full_name", "").split("/")
+    # if owner and repo:
+    #     gh = login(token=os.getenv("GITHUB_TOKEN"))
+    #     if gh:
+    #         issue = gh.issue(owner, repo, payload.get("issue", {}).get("number"))
+    #         if issue:
+    #             issue.create_comment(f"New task, id:{cloned_task.id} is in queue {queue_name}")
+    #         else:
+    #             print(f'can not comment issue, {payload.get("issue", {}).get("number")}')
+    #     else:
+    #         print(f"can not log in to gh, {os.getenv('GITHUB_TOKEN')}")
+    return cloned_task or cloned_task.id
 
 
 if __name__ == "__main__":
