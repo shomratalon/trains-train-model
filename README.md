@@ -44,7 +44,7 @@ jobs:
         # Example how you can use outputs from the train action
         - name: Print task status
           run: |
-            echo "Task stats is ${TASK_STATUS} for task ${CLONED_TASK}"
+            echo "Task ${CLONED_TASK} state: ${TASK_STATUS}"
           env:
             TASK_STATUS: ${{ steps.train.outputs.TASK_STATUS }}
             CLONED_TASK: ${{ steps.train.outputs.CLONED_TASK }}
