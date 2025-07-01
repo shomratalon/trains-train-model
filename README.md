@@ -1,12 +1,12 @@
-# GitHub Action For Running You Experiment With Allegro Trains
+# GitHub Action For Running You Experiment With ClearML
 
 ![GitHub stars](https://img.shields.io/github/stars/allegroai/trains?style=social)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shomratalon/trains-train-model/Test%20train%20model)
 
 
-Train models easily with Allegro Trains from your repo!
+Train models easily with ClearML from your repo!
  
-This action will help you to run your experiments with Trains from Github directly. 
+This action will help you to run your experiments with ClearML from Github directly. 
 Just comment from any issue or pull request with 
   - `/train-model branch <brach name>`
   - `/train-model tag <tag_name> `
@@ -34,9 +34,9 @@ jobs:
           uses: shomratalon/trains-train-model@master
           id: train
           with:
-            TRAINS_API_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-            TRAINS_API_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-            TRAINS_API_HOST: ${{ secrets.TRAINS_API_HOST }}
+            CLEARML_API_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+            CLEARML_API_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            CLEARML_API_HOST: ${{ secrets.CLEARML_API_HOST }}
             TASK_ID: "e4623efdfa1d461e9101615728fdc52e"
             QUEUE_NAME: "train_queue"
           env:
@@ -53,9 +53,9 @@ jobs:
 ### Inputs
 
 #### Mandatory
-  1. `TRAINS_API_ACCESS_KEY`: Your trains api access key. You can find it in your trains.conf file under api.credentials.access_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section). 
-  2. `TRAINS_API_SECRET_KEY`: Your trains api secret key. You can find it in your trains.conf file under api.credentials.secret_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
-  3. `TRAINS_API_HOST`: The Trains api server address. You can find it in your trains.conf file under  api.api_server section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
+  1. `CLEARML_API_ACCESS_KEY`: Your ClearML api access key. You can find it in your trains.conf file under api.credentials.access_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section). 
+  2. `CLEARML_API_SECRET_KEY`: Your ClearML api secret key. You can find it in your trains.conf file under api.credentials.secret_key section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
+  3. `CLEARML_API_HOST`: The ClearML api server address. You can find it in your trains.conf file under  api.api_server section, [read more](https://allegro.ai/docs/references/trains_ref/#api-section).
   4. `TASK_ID`: Id of the task you would like to clone.
 
 #### Optional
